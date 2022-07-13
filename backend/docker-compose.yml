@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  postgredb:
+    image: postgres
+    restart: always
+    environment:
+      sPOSTGRES_HOST: postgredb
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: stylesagedb
+      POSTGRES_USER: Ds5DTAxP
+      POSTGRES_PASSWORD: 5nFyHgRtx8z3Mf5kcar8d2D4yQrVgFE2
+      SECRET_KEY: e%ebfx1%5ot@^nqru7!i1705qq7*@30b3Khgf5@zss%h93tn!63
+      DEBUG: 0
+    volumes:
+       - /srv/containers/postgresql/data:/var/lib/postgresql/data
+    networks:
+      stylesage_net:
+        ipv4_address: 172.18.0.120
+
+  phppgadmin:
+    image: docker.io/bitnami/phppgadmin:7
+    restart: always
+    environment:
+      DATABASE_HOST: postgredb
+    networks:
+      stylesage_net:
+        ipv4_address: 172.18.0.110
+    depends_on:
+      - postgredb
+  
+  stylesage_api:
+    build: .
+    command: >
+      sh -c "poetry run python manage.py migrate &&             
+             poetry run python manage.py runserver 0.0.0.0:8800" 
+
+
+    restart: always
+    environment:
+      POSTGRES_HOST: postgredb
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: stylesagedb
+      POSTGRES_USER: Ds5DTAxP
+      POSTGRES_PASSWORD: 5nFyHgRtx8z3Mf5kcar8d2D4yQrVgFE2
+      SECRET_KEY: e%ebfx1%5ot@^nqru7!i1705qq7*@30b3Khgf5@zss%h93tn!63
+      DEBUG: 0
+    volumes:
+      - ./:/opt/projects/StylesageTest/
+    links:
+      - postgredb
+    networks:
+      stylesage_net:
+        ipv4_address: 172.18.0.100
+    ports:
+      - "8800:8800"
+    depends_on:
+      - postgredb
+
+networks:
+  stylesage_net:
+      ipam:
+          config:
+            - subnet: 172.18.0.0/24
+
+ 
