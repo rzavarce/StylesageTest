@@ -1,6 +1,15 @@
 <template>
 
-{{ cat_info.name }}
+  <q-img
+  :src="cat_info.url"
+  style="width: 100%"
+  >
+  <div class="absolute-bottom text-subtitle1 text-center">
+
+    Hello, my name is <b>{{ cat_info.name }}</b> and my breed is <b>{{ cat_info.breeds[0].name }}</b>, {{ cat_info.breeds[0].description }}.
+    
+  </div>
+</q-img>
 
 </template>
 
@@ -8,11 +17,6 @@
 
   import {
     defineComponent,
-    // PropType,
-    // computed,
-    // ref,
-    // toRef,
-    // Ref,
   } from 'vue';
 
 

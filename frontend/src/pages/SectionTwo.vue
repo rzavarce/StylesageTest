@@ -3,7 +3,7 @@
     <q-card class="fit">
       <q-card-section>
         <div class="text-h4 text-grey-8">
-          Section One 
+          Section Two 
         </div>
 
       </q-card-section>
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
+// import ExampleComponent from 'components/ExampleComponent.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
