@@ -1,17 +1,25 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-      <div id="app">
-    <h2>Dashboard</h2> 
-    
-  </div>
+  <q-page class="q-pa-sm">
+    <q-card class="fit">
+      <q-card-section>
+        <div class="text-h4 text-grey-8">
+          Section One 
+        </div>
 
-
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+      </q-card-section>
+      <q-separator/>
+      <q-card-section>
+        <div class="q-pa-sm">
+            <div class="row">
+              
+              
+            </div>
+        </div>
+      </q-card-section>
+            <q-card-actions align="left">
+        <q-btn label="Clean panel" class="text-capitalize q-ma-sm" color="indigo-7" @click="show=false" />
+      </q-card-actions>
+    </q-card>
   </q-page>
 </template>
 
@@ -22,7 +30,7 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { ExampleComponent },
+  components: {  },
   setup() {
     const todos = ref<Todo[]>([
       {

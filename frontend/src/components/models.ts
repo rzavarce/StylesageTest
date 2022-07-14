@@ -3,6 +3,11 @@ export interface Todo {
   content: string;
 }
 
+export interface Cats {
+  id: number;
+  content: string;
+}
+
 export interface Meta {
   totalCount: number;
 }

@@ -1,21 +1,31 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFf">
     <q-header elevated>
       <q-toolbar>
+
+        <div class="row no-wrap">
+          <div style="min-width: 300px" >
+        
+
+        <q-toolbar-title>
+          <q-avatar>
+                <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
+              </q-avatar>
+          StylesageTest
+        </q-toolbar-title>
+
+      </div>
         <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
+
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        </div>        
       </q-toolbar>
     </q-header>
 
@@ -23,13 +33,16 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      class="bg-primary text-white"
     >
       <q-list>
         <q-item-label
           header
         >
-          Essential Links
+          a Stylesage knownege test app
         </q-item-label>
+
+        <q-separator class="bg-grey-1" />
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -37,11 +50,31 @@
           v-bind="link"
         />
       </q-list>
+
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container
+      class="bg-grey-3"
+    >
       <router-view />
     </q-page-container>
+
+
+  <q-footer class="bg-black-8 text-white">
+    <div class="row" style="padding: 20px 20px 10px 20px;">
+      <span class="text-body5 text-white text-weight-bold">
+        Quasar v{{ $q.version }} © 2020 Workflow, Inc. All rights reserved.
+      </span>
+      <q-space></q-space>
+      <div class="gt-xs">        
+        <q-btn icon="fa-brands fa-github" flat dense color="white-8"></q-btn>
+        <q-btn icon="fab fa-facebook" flat dense color="white-8"></q-btn>
+        <q-btn icon="fab fa-twitter" flat dense color="white-8"></q-btn>
+        <q-btn icon="fab fa-instagram" flat dense color="white-8"></q-btn>
+      </div>
+    </div>
+  </q-footer>
+
   </q-layout>
 </template>
 
@@ -51,47 +84,30 @@ import EssentialLink from 'components/EssentialLink.vue';
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Dashboard',
+    icon: 'dashboard',
+    link: '/Dashboard'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Section One',
+    icon: 'pets',
+    link: '/SectionOne'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'Section Two',
+    icon: 'card_giftcard',
+    link: '/SectionTwo'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'Section Tree',
+    icon: 'bar_chart',
+    link: '/SectionTree'
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: 'Logout',
+    icon: 'logout',
+    link: '/'
   },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
 ];
 
 export default defineComponent({
@@ -114,3 +130,18 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+#mainsite {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+.q-item.q-router-link--active, .q-item--active {
+  color: red;
+}
+</style>
