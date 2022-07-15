@@ -19,9 +19,6 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
 
-# from users.views import ConfirmAccountView
-# from portfolios.views import AcceptInvitationView
-
 
 PREFIX_API = "api/v1/"
 
@@ -29,11 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('baton/', include('baton.urls')),
 
-    # path(PREFIX_API, include(('users.urls', 'users'), namespace='users')),
-    # path(PREFIX_API + 'password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-    # path('ConfirmAccount/<str:uidb64>/<str:token>/', ConfirmAccountView, name='activate'),
-    # path('AcceptInvitation/<str:portfolio_id>/', AcceptInvitationView, name='activate'),
-
+    path(PREFIX_API, include('coupons.urls')),
+    path(PREFIX_API, include('users.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

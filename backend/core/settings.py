@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'simple_history',
 
     # APPS
+    "coupons",
     'baton.autodiscover',
 
 ]
@@ -69,6 +70,7 @@ ROOT_URLCONF = 'core.urls'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8081",
+
 ]
 
 

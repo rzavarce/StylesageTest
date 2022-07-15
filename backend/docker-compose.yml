@@ -18,24 +18,11 @@ services:
       stylesage_net:
         ipv4_address: 172.18.0.120
 
-  phppgadmin:
-    image: docker.io/bitnami/phppgadmin:7
-    restart: always
-    environment:
-      DATABASE_HOST: postgredb
-    networks:
-      stylesage_net:
-        ipv4_address: 172.18.0.110
-    depends_on:
-      - postgredb
-  
   stylesage_api:
     build: .
     command: >
       sh -c "poetry run python manage.py migrate &&             
-             poetry run python manage.py runserver 0.0.0.0:8800" 
-
-
+             poetry run python manage.py runserver 0.0.0.0:8800"
     restart: always
     environment:
       POSTGRES_HOST: postgredb
