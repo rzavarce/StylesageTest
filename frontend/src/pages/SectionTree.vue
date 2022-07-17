@@ -1,53 +1,76 @@
 <template>
-    <div id="app">
-    <h2>Section Tree</h2> 
-    
-  </div>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page padding>
+
+
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-import { defineComponent, ref } from 'vue';
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'IndexPage',
-  components: { ExampleComponent },
-  setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
+
+  import axios from 'axios';
+  import { Loading } from 'quasar';
+  import '../router/axiosInterceptor';
+
+ 
+
+  export default defineComponent({
+    name: 'SectionTwo',
+    components: {
+      
+    },
+    data(){
+      return{
+        
       }
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200
-    });
-    return { todos, meta };
-  }
-});
+    },
+    mounted () {
+
+      console.log('pasoooooooooooo');
+
+      Loading.show();
+
+      let payload = {
+          'key':'qqqqq',
+          'resource':'yyy',
+          'mode': 'sha256',
+          'nonce': '{{nonce}}',
+          'payload': {
+              'email':'admin@stylesage.com',
+              'password':'admin.2022'
+
+        }
+      }
+
+
+      axios
+      .post(process.env.ENV_API_URL + '/coupons/stats/', payload)
+      .then((response) => {      
+
+
+        console.log(response.data);
+
+
+        Loading.hide()
+
+
+      })
+      .catch((error) => {
+
+        Loading.hide();
+
+        this.$q.notify({
+          color: 'red-5',
+          textColor: 'white',
+          icon: 'warning',
+          message: 'Error: Somethings has been bad.' + error
+        });
+
+      });
+
+    }
+
+  })
 </script>
+

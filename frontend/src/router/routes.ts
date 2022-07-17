@@ -6,7 +6,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       
-      { path: '/Dashboard', component: () => import('pages/Dashboard.vue') },
+      { path: '/Dashboard', name: 'dashboard', component: () => import('pages/Dashboard.vue') },
       
     ],
   },
@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
     path: '/SectionOne',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/SectionOne', component: () => import('pages/SectionOne.vue') },    
+      { path: '/SectionOne', name: 'sectionone', component: () => import('pages/SectionOne.vue') },    
     ],
   },
 
@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
 
-      { path: '/SectionTwo', component: () => import('pages/SectionTwo.vue') },
+      { path: '/SectionTwo', name: 'sectiontwo', component: () => import('pages/SectionTwo.vue') },
       
     ],
   },
@@ -34,7 +34,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
 
-      { path: '/SectionTree', component: () => import('pages/SectionTree.vue') },
+      { path: '/SectionTree', name: 'sectiontree', component: () => import('pages/SectionTree.vue') },
       
     ],
   },
@@ -43,7 +43,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'login',
-    component: () => import('pages/Login-1.vue')
+    component: () => import('pages/LoginPage.vue')
   },
 
   // Always leave this as last one,
