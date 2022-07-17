@@ -25,8 +25,12 @@
           @click="toggleLeftDrawer"
         />
 
-        </div>        
+        </div>   
+        <q-space></q-space>
+        <b>Login as: {{ this.email }} </b>   
       </q-toolbar>
+
+      
     </q-header>
 
     <q-drawer
@@ -116,7 +120,15 @@ export default defineComponent({
   components: {
     EssentialLink
   },
+  data () {
+    return {
 
+      'username': localStorage.username,
+      'email': localStorage.email
+
+
+    }
+  },
   setup () {
     const leftDrawerOpen = ref(false)
 
@@ -127,7 +139,7 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
-  }
+  },
 });
 </script>
 

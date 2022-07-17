@@ -20,10 +20,8 @@ class AuthGetToken(APIView):
         username = payload['username']
         password = payload['password']
         user = authenticate(request, username=username, password=password)
-        response = {}
 
         if user is not None:
-            laa = login(request, user)
 
             token, _ = Token.objects.get_or_create(user=user)
 
@@ -34,8 +32,9 @@ class AuthGetToken(APIView):
             print()
 
             response = {
-                'token': token,
+                'token': str(token),
                 'user_id': user.pk,
+                'username': user.username,
                 'email': user.email
             }
 
@@ -47,7 +46,8 @@ class AuthGetToken(APIView):
             print()
 
             response = {
-                "status": False
+                "status": False,
+                "msg": "Error: user and password are invalid."
             }
 
         return Response(response)

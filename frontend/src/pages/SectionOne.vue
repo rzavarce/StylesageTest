@@ -63,28 +63,18 @@
 
   export default defineComponent({
     name: 'SectionOne',
-    props: {
-      
-    },
     data() {
-
       return {
         show: false,
         cats_data: cats_data,
-        cat_info: {
-          
-          
-        },  
-
+        cat_info: {},
       }
     },
     components: { BadgeCounter, ShowCatInfo },
     methods:{
       onCatClick: function(cat: object) {
-
         this.show = true
         this.cat_info = cat 
-
       }
     }
   });

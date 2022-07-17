@@ -3,8 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-PROMOTIONS_TYPES = ((100, 'percent-off,'), (200, 'buy-one-get-one'), (300, 'dollar-off'),
-                    (400, 'free-gift'), (500, 'free-shipping'))
+PROMOTIONS_TYPES = (('percent-off', 'percent-off'), ('buy-one-get-one', 'buy-one-get-one'), ('dollar-off', 'dollar-off'),
+                    ('free-gift', 'free-gift'), ('free-shipping', 'free-shipping'))
 
 
 class Coupon(models.Model):
@@ -21,16 +21,16 @@ class Coupon(models.Model):
 
     last_seen = models.DateField(verbose_name=_('Last Seen'),)
 
-    promotion_type = models.IntegerField(choices=PROMOTIONS_TYPES, verbose_name=_('Promotions Type'))
+    promotion_type = models.CharField(max_length=20, choices=PROMOTIONS_TYPES, verbose_name=_('Promotions Type'))
 
     title = models.CharField(max_length=200, verbose_name=_('Title'))
 
-    value = models.IntegerField(verbose_name=_('Value'),)
+    value = models.IntegerField(verbose_name=_('Value'), null=True, )
 
     webshop_id = models.CharField(max_length=200, verbose_name=_('Webshop Id'))
 
     def __str__(self):
-        return self.country_code + "-" + self.coupon_id + "-" + self.webshop_id
+        return str(self.promotion_type) + "-" + str(self.coupon_id) + "-" + str(self.webshop_id)
 
     class Meta:
         verbose_name = _('Coupon')

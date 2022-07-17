@@ -21,6 +21,9 @@ requests = "^2.27.1"
 django-rest-passwordreset = "^1.2.1"
 six = "^1.16.0"
 django-jsonfield = "^1.4.1"
+numpy = "^1.23.1"
+pandas = "^1.4.3"
+django-pandas = "^0.6.6"
 
 [tool.poetry.dev-dependencies]
 
