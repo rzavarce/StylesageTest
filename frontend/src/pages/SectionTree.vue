@@ -32,13 +32,11 @@
       Loading.show();
 
       let payload = {
-          'key':'qqqqq',
-          'resource':'yyy',
-          'mode': 'sha256',
-          'nonce': '{{nonce}}',
-          'payload': {
-              'email':'admin@stylesage.com',
-              'password':'admin.2022'
+        'key':'qqqqq',
+        'resource':'yyy',
+        'mode': 'sha256',
+        'nonce': '{{nonce}}',
+        'payload': {
 
         }
       }

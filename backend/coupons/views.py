@@ -39,16 +39,32 @@ class CouponsDataLoader(APIView):
 
         df = read_frame(qs)
 
+        # Using groupby() and count()
+        group_by_type_counts = df.groupby(['promotion_type'])['promotion_type'].count().to_json()
+
+        df_mask = df['promotion_type'] == 'percent-off'
+
+        filtered_df = df[df_mask]
+
+        percent_off_stats = {
+            "counts": filtered_df['id'].count(),
+
+        }
+
         print()
-        print(df)
+        print(percent_off_stats)
         print()
 
         response = {
             "status": True,
-            "payload": {}
+            "payload": {
+                "group_by_promotion_type": json.loads(group_by_type_counts),
+                "pecent_off_stats": percent_off_stats
+
+            }
         }
 
-        return HttpResponse(response, content_type='application/json', status=status.HTTP_201_CREATED)
+        return Response(response, content_type='application/json', status=status.HTTP_201_CREATED)
 
 
 
