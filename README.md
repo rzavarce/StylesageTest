@@ -68,21 +68,21 @@ It will only be necessary to have previously installed the following packages:
    ```sh
    cd StylesageTest
    ```
-3 Backend deploy:
+3. Backend deploy:
    ```sh
    cd backend
    ```
    ```sh
    docker-compose up
    ```   
-3 Frontend deploy:
+4. Frontend deploy:
    ```sh
    cd frontend
    ```
    ```sh
    quassar dev
    ```
-4. Enjoy! 
+5. Enjoy! 
 
 
 ## Routes
