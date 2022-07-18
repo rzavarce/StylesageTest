@@ -93,11 +93,6 @@ class CouponsDataLoader(APIView):
                 }
             )
 
-        print()
-        print(title_words_key)
-        #print(description_words_key)
-        print()
-
         words_keys_stats = {
             "title": title_words_key_list,
             "description": description_words_key_list,
