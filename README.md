@@ -80,12 +80,13 @@ It will only be necessary to have previously installed the following packages:
    cd frontend
    ```
    ```sh
+   npm install
+   ```
+   ```sh
    quassar dev
    ```
 5. Enjoy! 
 
-
-## Routes
 
 ### Sitemap
 * Login Front: http://localhost:8081/#/ 
@@ -94,10 +95,6 @@ It will only be necessary to have previously installed the following packages:
   [password]: admin.2022
 * DRF Api Description: http://0.0.0.0:8800/api/v1/coupons/
   [Admin Login is required]
-
-### Endpoints
-* Signin: http://172.18.0.100:15000/cartotest/api/v1/signon/
-* GetData: http://172.18.0.100:15000/cartotest/api/v1/map/get_boundaries/
 
 ## License
 
